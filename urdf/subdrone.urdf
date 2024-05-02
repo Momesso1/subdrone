@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+
+<robot name="subdrone" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <material name="yellow">
+        <color rgba="0.757 0.557 0.0 1.0"/>
+    </material>
+
+    <material name="white">
+        <color rgba="0.965 0.965 0.953 1.0"/>
+    </material>
+
+    <material name="grey">
+        <color rgba="0.627 0.627 0.627 1.0"/>
+    </material>
+
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <mesh filename="/home/momesso/subdrone_ws/src/subdrone_simulation/meshes/base_link.dae" />
+            </geometry>
+            <material name="yellow"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.4 0.25 0.1" />
+            </geometry>
+        </collision>
+        
+    </link>
+
+    <link name="front_left_thruster_link">
+        <visual>
+            <geometry>
+                <mesh filename="/home/momesso/subdrone_ws/src/subdrone_simulation/meshes/vertical_thruster.dae" />
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.02425" length="0.0305"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.020"/>
+           <inertia ixx="2"  ixy="0"  ixz="0" iyy="2" iyz="0" izz="2" />
+        </inertial>
+    </link>
+
+    <link name="front_right_thruster_link">
+        <visual>
+            <geometry>
+                <mesh filename="/home/momesso/subdrone_ws/src/subdrone_simulation/meshes/vertical_thruster.dae" />
+            </geometry>
+             <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.02425" length="0.0305"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.020"/>
+           <inertia ixx="2"  ixy="0"  ixz="0" iyy="2" iyz="0" izz="2" />
+        </inertial>
+    </link>
+
+    <link name="back_thruster_link">
+        <visual>
+            <geometry>
+                <mesh filename="/home/momesso/subdrone_ws/src/subdrone_simulation/meshes/vertical_thruster.dae" />
+            </geometry>
+             <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.02425" length="0.0305"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.020"/>
+           <inertia ixx="2"  ixy="0"  ixz="0" iyy="2" iyz="0" izz="2" />
+        </inertial>
+    </link>
+
+    <link name="back_left_thruster_link">
+        <visual>
+            <geometry>
+                <mesh filename="/home/momesso/subdrone_ws/src/subdrone_simulation/meshes/back_thruster.dae" />
+            </geometry>
+             <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.0552" length="0.0134"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.020"/>
+           <inertia ixx="2"  ixy="0"  ixz="0" iyy="2" iyz="0" izz="2" />
+        </inertial>
+    </link>
+
+    <link name="back_right_thruster_link">
+        <visual>
+            <geometry>
+                <mesh filename="/home/momesso/subdrone_ws/src/subdrone_simulation/meshes/back_thruster.dae" />
+            </geometry>
+             <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.0552" length="0.0134"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.020"/>
+           <inertia ixx="2"  ixy="0"  ixz="0" iyy="2" iyz="0" izz="2" />
+        </inertial>
+    </link>
+
+    <link name="camera_link">
+        <visual>
+            <geometry>
+                <mesh filename="/home/momesso/subdrone_ws/src/subdrone_simulation/meshes/camera.dae" />
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.045"/>
+            <inertia ixx="2"  ixy="0"  ixz="0" iyy="2" iyz="0" izz="2" />
+        </inertial>
+    </link>
+
+
+    <link name="flashlight_left_link">
+        <visual>
+            <geometry>
+                <mesh filename="/home/momesso/subdrone_ws/src/subdrone_simulation/meshes/flashlight.dae" />
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.0213" length="0.0141"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.30"/>
+            <inertia ixx="2"  ixy="0"  ixz="0" iyy="2" iyz="0" izz="2" />
+        </inertial>
+    </link>
+
+     <link name="flashlight_right_link">
+        <visual>
+            <geometry>
+                <mesh filename="/home/momesso/subdrone_ws/src/subdrone_simulation/meshes/flashlight.dae" />
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.0213" length="0.0141"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.030"/>
+            <inertia ixx="2"  ixy="0"  ixz="0" iyy="2" iyz="0" izz="2" />
+        </inertial>
+    </link>
+
+
+
+
+
+
+
+
+
+    <joint name="front_left_thruster_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_left_thruster_link"/>
+        
+        <axis xyz="0.0 0.0 1.0"/>
+
+        <origin xyz="0.12389 0.0685 0.008958" rpy="0 0 0"/> 
+        
+    </joint>
+
+    <joint name="front_right_thruster_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_right_thruster_link"/>
+        
+        <axis xyz="0.0 0.0 1.0"/>
+
+        <origin xyz="0.12389 -0.0685 0.008958" rpy="0 0 0"/> 
+        
+    </joint>
+
+    <joint name="back_thruster_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="back_thruster_link"/>
+        
+        <axis xyz="0.0 0.0 1.0"/>
+
+        <origin xyz="-0.15711 -0.000001 0.008662" rpy="0 0 0"/>   
+    </joint>
+
+    <joint name="back_left_thruster_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="back_left_thruster_link"/>
+        
+        <axis xyz="-1.0 0.0 0.0"/>
+
+        <origin xyz="-0.12473 0.074903 -0.0000001" rpy="0 0 0"/> 
+        
+    </joint>
+
+    <joint name="back_right_thruster_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="back_right_thruster_link"/>
+        
+        <axis xyz="-1.0 0.0 0.0"/>
+
+        <origin xyz="-0.12473 -0.074903 -0.0000001" rpy="0 0 0"/> 
+        
+    </joint>
+    
+
+    <joint name="camera_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="camera_link"/>
+        
+        <axis xyz="1.0 0.0 0.0"/>
+
+        <origin xyz="0.17389 0.0 0.0" rpy="0 0 0"/> 
+        
+    </joint>
+
+    <joint name="flashlight_left_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="flashlight_left_link"/>
+        
+        <axis xyz="1.0 0.0 0.0"/>
+
+        <origin xyz="0.17716 0.0551 0.0" rpy="0 0 0"/> 
+        
+    </joint>
+
+    <joint name="flashlight_right_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="flashlight_right_link"/>
+        
+        <axis xyz="1.0 0.0 0.0"/>
+
+        <origin xyz="0.17716 -0.0551 0.0" rpy="0 0 0"/> 
+        
+    </joint>
+  
+    <gazebo reference="camera_link">
+        <sensor type="camera" name="camera1">
+          <update_rate>30.0</update_rate>
+          <camera name="head">
+            <horizontal_fov>1.3962634</horizontal_fov>
+            <image>
+              <width>800</width>
+              <height>800</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.02</near>
+              <far>300</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <!-- Noise is sampled independently per pixel on each frame.
+                   That pixel's noise value is added to each of its color
+                   channels, which at that point lie in the range [0,1]. -->
+              <mean>0.0</mean>
+              <stddev>0.007</stddev>
+            </noise>
+          </camera>
+          <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>30.0</updateRate>
+            <cameraName>rrbot/camera1</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <frameName>camera_link</frameName>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+          </plugin>
+        </sensor>
+      </gazebo>
+
+      <gazebo>
+        <plugin
+        filename="gz-sim-thruster-system"
+        name="gz::sim::systems::Thruster">
+            <namespace>bluerov2</namespace>
+            <joint_name>back_right_thruster_joint</joint_name>
+            <!-- Reverse spin to balnce torque -->
+            <thrust_coefficient>-0.02</thrust_coefficient>
+            <fluid_density>998.0</fluid_density>
+            <propeller_diameter>0.1</propeller_diameter>
+            <velocity_control>true</velocity_control>
+            <use_angvel_cmd>False</use_angvel_cmd>
+        </plugin>
+
+        <plugin
+            filename="gz-sim-thruster-system"
+            name="gz::sim::systems::Thruster">
+            <namespace>bluerov2</namespace>
+            <joint_name>back_left_thruster_joint</joint_name>
+            <!-- Reverse spin to balnce torque -->
+            <thrust_coefficient>-0.02</thrust_coefficient>
+            <fluid_density>998.0</fluid_density>
+            <propeller_diameter>0.1</propeller_diameter>
+            <velocity_control>true</velocity_control>
+            <use_angvel_cmd>False</use_angvel_cmd>
+        </plugin>
+
+    </gazebo>
+      
+      
+
+     
+
+</robot>
